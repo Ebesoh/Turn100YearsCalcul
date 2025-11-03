@@ -48,5 +48,5 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
-    - name: Run unit tests
+    - name: Test
       run: dotnet test --no-build --verbosity normal
