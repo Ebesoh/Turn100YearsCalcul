@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turn100YearsCalcul", "Turn100YearsCalcul\Turn100YearsCalcul.csproj", "{F7F08B51-9096-4700-BE29-81AADF41E845}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turn100YearsCalculTest", "Turn100YearsCalculTest\Turn100YearsCalculTest.csproj", "{1550D613-A0AB-4EE3-A254-3AF0786A03CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F7F08B51-9096-4700-BE29-81AADF41E845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7F08B51-9096-4700-BE29-81AADF41E845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7F08B51-9096-4700-BE29-81AADF41E845}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7F08B51-9096-4700-BE29-81AADF41E845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1550D613-A0AB-4EE3-A254-3AF0786A03CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1550D613-A0AB-4EE3-A254-3AF0786A03CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1550D613-A0AB-4EE3-A254-3AF0786A03CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1550D613-A0AB-4EE3-A254-3AF0786A03CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF34A918-7FEA-4DFB-A957-5E81BD865823}
+	EndGlobalSection
+EndGlobal
