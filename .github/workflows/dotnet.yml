@@ -49,4 +49,4 @@ jobs:
       run: dotnet restore
 
     - name: Test
-      run: dotnet test Turn100YearsCalcul.sln --no-build --verbosity normal
+      run: dotnet test Turn100YearsCalcul/Turn100YearsCalculTest/Turn100YearsCalculTest.csproj --no-build --verbosity normal
