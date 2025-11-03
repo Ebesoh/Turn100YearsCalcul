@@ -77,10 +77,10 @@
                         }
 
 
-                        if (age > 100)
+                        if (age >= 100)
                         {
                             Console.Clear();
-                            Console.WriteLine("Age must be less than or equal to 100.");
+                            Console.WriteLine("Age must be less than 100.");
                             continue;
                         }
 
