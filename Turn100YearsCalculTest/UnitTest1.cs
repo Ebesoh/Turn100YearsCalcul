@@ -40,7 +40,7 @@ namespace Turn100YearsCalculTest
             person.SetNameAge("Jane S", 0);
             int currentYear = DateTime.Now.Year;
             int expectedYear = currentYear + (100 - 0);
-            Assert.That(expectedYear, Is.EqualTo(person.CalculateYearWhen100()));
+            Assert.That(expectedYear, Is.EqualTo(person.CalculateYearWhen100())); // checking that
         }
 
         [Test]
