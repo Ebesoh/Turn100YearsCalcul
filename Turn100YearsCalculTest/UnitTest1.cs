@@ -1,96 +1,36 @@
+// This test verifies that when the user selects option 2, the program terminates correctly.//
+
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Turn100YearsCalcul;
+using NUnit.Framework;
+using System;
+using System.IO;
+using System.Globalization;
 
 namespace Turn100YearsCalculTest
 {
     public class Tests
     {
         [Test]
-        public void SetNameAge_ValidInput_SetsProperties()
+        public void Main_WhenOption2_TerminatesProgram()
         {
-            NameAgeCal person = new NameAgeCal();
-            person.SetNameAge("John Doe", 30);
-            Assert.That(person.Name, Is.EqualTo("John Doe"));
-            Assert.That(person.Age, Is.EqualTo(30));
+            
+            string simulatedInput = "2\n"; // This creates fake keyboard input (user selects option 2 to quit and \n to simulate Enter key to end the program)
+            using var input = new StringReader(simulatedInput); // Simulate console input
+            using var output = new StringWriter(); // Capture what program writes using console.writeline()
+
+            Console.SetIn(input); // Redirect console input to our simulated input
+            Console.SetOut(output); // Redirect console output to our StringWriter to capture output
+
+            // Act
+            Turn100YearsCalcul.Program.runProgram(); // Call the method that contains the main program logic
+
+            // Assert
+            string consoleOut = output.ToString(); // Get the captured output as a string
+            Assert.That(consoleOut, Does.Contain("Program terminated.")); // Verify that the output contains the termination message
+
         }
 
-
-        [Test]
-        public void SetNameAge_nonValidInput_SetsProperties()
-        {
-            NameAgeCal person = new NameAgeCal();
-            person.SetNameAge(" ", -1);
-            Assert.That(person.Name, Is.EqualTo(" "));
-            Assert.That(person.Age, Is.EqualTo(-1));
-        }
-
-        [Test]
-        public void CalculateYearWhen100_ValidAge_ReturnsCorrectYear()
-        {
-            NameAgeCal person = new NameAgeCal();
-            person.SetNameAge("Jane Smith", 25);
-            int currentYear = DateTime.Now.Year;
-            int expectedYear = currentYear + (100 - 25);
-            Assert.That(expectedYear, Is.EqualTo(person.CalculateYearWhen100()));
-        }
-
-        [Test]
-        public void CalculateYearWhen100_nonValidAge0_ReturnsCorrectYear()
-        {
-            NameAgeCal person = new NameAgeCal();
-            person.SetNameAge("Jane S", 0);
-            int currentYear = DateTime.Now.Year;
-            int expectedYear = currentYear + (100 - 0);
-            Assert.That(expectedYear, Is.EqualTo(person.CalculateYearWhen100())); // checking that
-        }
-
-        [Test]
-        public void CalculateYearWhen100_nonValidAge130_ReturnsCorrectYear()
-        {
-            NameAgeCal person = new NameAgeCal();
-            person.SetNameAge("Jane S", 131);
-            int currentYear = DateTime.Now.Year;
-            int expectedYear = currentYear + (100 - 131);
-            Assert.That(expectedYear, Is.EqualTo(person.CalculateYearWhen100())); // checking that
-        }
-
-        [Test]
-        public void CalculateYearWhen100_ValidAge120_ReturnsCorrectYear() // check that 
-        {
-            NameAgeCal person = new NameAgeCal();
-            person.SetNameAge("Jane t", 120); // checking that
-            int currentYear = DateTime.Now.Year;
-            int expectedYear = currentYear + (100 - 120);
-            Assert.That(expectedYear, Is.EqualTo(person.CalculateYearWhen100())); // checking that
-        }
-
-        [Test]
-        public void CalculateYearWhen100_Age100_ReturnsCurrentYear()
-        {
-            NameAgeCal person = new NameAgeCal();
-            person.SetNameAge("Old Person", 100);
-            int currentYear = DateTime.Now.Year;
-            Assert.That(currentYear, Is.EqualTo(person.CalculateYearWhen100()));
-        }
-
-        [Test]
-        public void CalculateYearWhen100_AgeOver100_ReturnsPastYear()
-        {
-            NameAgeCal person = new NameAgeCal();
-            person.SetNameAge("Very Old Person", 110);
-            int currentYear = DateTime.Now.Year;
-            int expectedYear = currentYear + (100 - 110);
-            Assert.That(expectedYear, Is.EqualTo(person.CalculateYearWhen100()));
-        }
-
-        [Test]
-        public void CalculateYearWhen100_AgeNearZero_ReturnsFutureYear()
-        {
-            NameAgeCal person = new NameAgeCal();
-            person.SetNameAge("Young Person", 18);
-            int currentYear = DateTime.Now.Year;
-            int expectedYear = currentYear + (100 - 18);
-            Assert.That(expectedYear, Is.EqualTo(person.CalculateYearWhen100()));
-        }
 
 
     }

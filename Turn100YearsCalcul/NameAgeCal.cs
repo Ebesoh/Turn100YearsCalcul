@@ -9,17 +9,17 @@ namespace Turn100YearsCalcul
     public class NameAgeCal
     {
         public string Name { get; set; } = string.Empty;
-        public int Age { get; set; }
+        public float Age { get; set; }
 
-        public void SetNameAge(string name, int age)
+        public void SetNameAge(string name, float age)
         {
             Name = name;
             Age = age;
         }
 
-        public int CalculateYearWhen100()
+        public float CalculateYearWhen100()
         {
-            int currentYear = DateTime.Now.Year;
+            float currentYear = DateTime.Now.Year;
             return currentYear + (100 - Age);
         }
     }

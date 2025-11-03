@@ -1,9 +1,15 @@
-﻿namespace Turn100YearsCalcul
+﻿using System.Globalization;
+
+namespace Turn100YearsCalcul
 {
-    internal class Program
+    public static class Program
     {
-        static void Main(string[] args)
-        {
+        public static void Main(string[] args)
+        { 
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            runProgram();
+        }
+        public static void runProgram() { 
             string name;
             bool isRunning = true;
             while (isRunning)
@@ -35,7 +41,7 @@
                             continue;
                         }
 
-                        if (!name.Any(char.IsLetterOrDigit))
+                        if (name.Any(char.IsSymbol) || name.Any(char.IsSeparator) || name.Any(char.IsPunctuation))
                         {
                             Console.Clear();
                             Console.WriteLine("Name must not contain special characters.");
@@ -47,8 +53,8 @@
 
                     }
 
-                    String inputAge;
-                    int age;
+                    String inputAge = "";
+                    float age;
                     while (true)
                     {
                         Console.WriteLine("What is your age?");
@@ -68,7 +74,15 @@
                             continue;
                         }
 
-                        age = Convert.ToInt32(inputAge);
+                        age = float.Parse(inputAge,CultureInfo.InvariantCulture);
+                        Console.WriteLine(age);
+
+                        if(inputAge.Contains(","))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("\"Please use a dot (.) for decimals, not a comma (,).\"");
+                            continue;
+                        }
 
                         if (age <= 0)
                         {
@@ -99,10 +113,10 @@
                     NameAgeCal person = new NameAgeCal();
                     person.SetNameAge(name, age);
 
-                    int currentYear = DateTime.Now.Year;
+                    float currentYear = DateTime.Now.Year;
                     Console.WriteLine($"Current Year: {currentYear}");
 
-                    int yearWhen100 = currentYear + (100 - person.Age);
+                    float yearWhen100 = (float)Math.Round(currentYear + (100 - person.Age));
                     //Console.WriteLine($"Y {yearWhen100}.");
 
 
