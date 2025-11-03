@@ -34,6 +34,14 @@
                             Console.WriteLine("Name must not contain numbers.");
                             continue;
                         }
+
+                        if (!name.Any(char.IsLetterOrDigit))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Name must not contain special characters.");
+                            continue;
+                        }
+
                         Console.Clear();
                         break;
 
@@ -53,7 +61,7 @@
                             continue;
                         }
 
-                        if (!inputAge.Any(char.IsDigit))
+                        if (!inputAge.Any(char.IsDigit) )
                         {
                             Console.Clear();
                             Console.WriteLine("Age must contain ONLY numbers.");
