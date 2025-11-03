@@ -6,7 +6,7 @@ namespace Turn100YearsCalcul
     {
         public static void Main(string[] args)
         { 
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+        
             runProgram();
         }
         public static void runProgram() { 
