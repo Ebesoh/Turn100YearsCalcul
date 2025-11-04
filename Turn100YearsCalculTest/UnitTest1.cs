@@ -9,29 +9,85 @@ using System.Globalization;
 
 namespace Turn100YearsCalculTest
 {
+    [TestFixture]
     public class Tests
     {
         [Test]
-        public void Main_WhenOption2_TerminatesProgram()
+        public void SetNameAge_ShouldAssignValuesCorrectly() // Test for SetNameAge method
         {
-            
-            string simulatedInput = "2\n"; // This creates fake keyboard input (user selects option 2 to quit and \n to simulate Enter key to end the program)
-            using var input = new StringReader(simulatedInput); // Simulate console input
-            using var output = new StringWriter(); // Capture what program writes using console.writeline()
-
-            Console.SetIn(input); // Redirect console input to our simulated input
-            Console.SetOut(output); // Redirect console output to our StringWriter to capture output
+            // Arrange
+            var person = new NameAgeCal();
+            string expectedName = "Alice";
+            float expectedAge = 25.5f;
 
             // Act
-            Turn100YearsCalcul.Program.runProgram(); // Call the method that contains the main program logic
+            person.SetNameAge(expectedName, expectedAge); // Call the method to test
 
             // Assert
-            string consoleOut = output.ToString(); // Get the captured output as a string
-            Assert.That(consoleOut, Does.Contain("Program terminated.")); // Verify that the output contains the termination message
-
+            Assert.That(person.Name, Is.EqualTo(expectedName));
+            Assert.That(person.Age, Is.EqualTo(expectedAge));
         }
 
+        [Test]
+        public void CalculateYearWhen100_ShouldReturnCorrectYear()
+        {
+            // Arrange
+            var person = new NameAgeCal();
+            person.SetNameAge("Bob", 25);
 
+            float currentYear = DateTime.Now.Year;
+            float expected = currentYear + (100 - 25);
 
+            // Act
+            float result = person.CalculateYearWhen100();
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void CalculateYearWhen100_ShouldHandleDecimalAgesCorrectly()
+        {
+            // Arrange
+            var person = new NameAgeCal();
+            person.SetNameAge("Eve", 45.5f);
+
+            float currentYear = DateTime.Now.Year;
+            float expected = currentYear + (100 - 45.5f);
+
+            // Act
+            float result = person.CalculateYearWhen100();
+
+            // Assert
+            Assert.That(result, Is.EqualTo(expected).Within(0.0001), "Calculation should handle decimals precisely.");
+        }
+
+        [Test]
+        public void CalculateYearWhen100_ShouldIncreaseWhenAgeIsSmaller()
+        {
+            // Arrange
+            var younger = new NameAgeCal();
+            var older = new NameAgeCal();
+            younger.SetNameAge("Chris", 20);
+            older.SetNameAge("John", 50);
+
+            // Act
+            float yearYounger = younger.CalculateYearWhen100();
+            float yearOlder = older.CalculateYearWhen100();
+
+            // Assert
+            Assert.That(yearYounger, Is.GreaterThan(yearOlder), "Younger person should reach 100 later.");
+        }
+
+        [Test]
+        public void DefaultValues_ShouldBeInitializedCorrectly()
+        {
+            // Arrange
+            var person = new NameAgeCal();
+
+            // Assert
+            Assert.That(person.Name, Is.EqualTo(string.Empty));
+            Assert.That(person.Age, Is.EqualTo(0));
+        }
     }
 }

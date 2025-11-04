@@ -5,11 +5,12 @@ namespace Turn100YearsCalcul
     public static class Program
     {
         public static void Main(string[] args)
-        { 
-        
+        {
+
             runProgram();
         }
-        public static void runProgram() { 
+        public static void runProgram()
+        {
             string name;
             bool isRunning = true;
             while (isRunning)
@@ -67,17 +68,17 @@ namespace Turn100YearsCalcul
                             continue;
                         }
 
-                        if (!inputAge.Any(char.IsDigit) )
+                        if (!inputAge.Any(char.IsDigit))
                         {
                             Console.Clear();
                             Console.WriteLine("Age must contain ONLY numbers.");
                             continue;
                         }
 
-                        age = float.Parse(inputAge,CultureInfo.InvariantCulture);
+                        age = float.Parse(inputAge, CultureInfo.InvariantCulture);
                         Console.WriteLine(age);
 
-                        if(inputAge.Contains(","))
+                        if (inputAge.Contains(","))
                         {
                             Console.Clear();
                             Console.WriteLine("\"Please use a dot (.) for decimals, not a comma (,).\"");
