@@ -72,7 +72,7 @@ namespace Turn100YearsCalculTest
             older.SetNameAge("John", 50);
 
             // Act
-            float yearYounger = younger.CalculateYearWhen100();
+            float yearYounger = younger.CalculateYearWhen100();// Call the method to test
             float yearOlder = older.CalculateYearWhen100();
 
             // Assert
