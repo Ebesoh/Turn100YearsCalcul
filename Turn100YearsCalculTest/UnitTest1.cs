@@ -76,7 +76,7 @@ namespace Turn100YearsCalculTest
             float yearOlder = older.CalculateYearWhen100();
 
             // Assert
-            Assert.That(yearYounger, Is.GreaterThan(yearOlder), "Younger person should reach 100 later.");
+            Assert.That(yearYounger, Is.GreaterThan(yearOlder), "Younger person should reach 100 later.");// Assert that the younger person's year is greater than the older person's year
         }
 
         [Test]
